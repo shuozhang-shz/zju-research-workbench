@@ -816,8 +816,8 @@ class Bridge:
         log("wengine keys NOT found in portal pages")
 
     def _wengine_host_hex(self, host):
-        key = self.webvpn_key or _WENGINE_KEY
-        iv = self.webvpn_iv or _WENGINE_KEY
+        key = self.webvpn_key or "wrdvpnisawesome!"
+        iv = self.webvpn_iv or "wrdvpnisawesome!"
         return wengine_encrypt(host, key, iv)
 
     def try_webvpn_auto_login(self):
