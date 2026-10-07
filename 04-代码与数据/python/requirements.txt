@@ -1,0 +1,8 @@
+# 本工作台 Python 工具依赖
+# 安装：pip install -r requirements.txt
+# （建议先创建虚拟环境：python -m venv .venv）
+numpy>=1.24
+scipy>=1.10
+matplotlib>=3.7
+# 仅 pinn_1d_bar.py 与 neural_constitutive.py 需要：
+torch>=2.0

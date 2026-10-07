@@ -1,0 +1,86 @@
+% !TEX program = pdflatex
+% =====================================================================
+% 软物质力学论文模板（英文）
+% 编译：pdflatex main 或 latexmk -pdf main（TeX Live / Overleaf 直接可用）
+% 中文草稿：把 documentclass 换成 \documentclass[11pt,a4paper]{ctexart}，
+%           并用 xelatex 编译。
+% =====================================================================
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,bm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{subcaption}
+\usepackage{siunitx}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+
+% ---------- 常用记号（按自己的习惯增删） ----------
+\newcommand{\FPK}{\ensuremath{\bm{P}}}        % 第一 Piola--Kirchhoff 应力
+\newcommand{\FG}{\ensuremath{\bm{F}}}         % 变形梯度
+\newcommand{\Ione}{\ensuremath{\bar{I}_1}}
+\newcommand{\Itwo}{\ensuremath{\bar{I}_2}}
+\DeclareMathOperator{\tr}{tr}
+
+\title{A Minimal Template for Soft Matter Mechanics Papers}
+\author{Your Name\\ Zhejiang University, School of Aeronautics and Astronautics}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+三句话结构：背景与问题（1 句）→ 本文做了什么、怎么做（1--2 句）→ 关键发现与意义（1--2 句）。
+摘要里避免公式和引用，数字要具体。
+\end{abstract}
+
+\section{Introduction}
+经典漏斗结构：领域重要性 $\to$ 已有工作（按主题分组，不要流水账）$\to$ 尚存问题
+$\to$ 本文贡献（常用 \emph{The main contributions are threefold: ...}）。
+软物质本构的经典脉络可引 Ogden \cite{ogden1972}、Gent \cite{gent1996}、
+Arruda--Boyce \cite{arruda1993}；凝胶耦合场可引 Hong \emph{et al.}\ \cite{hong2008}；
+机器学习方面可引 PINN \cite{raissi2019}。
+
+\section{Theoretical framework}
+\subsection{Kinematics}
+变形梯度 $\FG = \partial \bm{x}/\partial \bm{X}$，$J = \det \FG$；
+不可压时 $J=1$，右 Cauchy--Green 张量 $\bm{C} = \FG^{\mathrm{T}}\FG$。
+
+\subsection{Constitutive model}
+以不可压超弹性为例，
+\begin{equation}
+  \FPK = \frac{\partial W}{\partial \FG} - p\,\FG^{-\mathrm{T}},
+  \qquad
+  W = \sum_{i=1}^{N} \frac{\mu_i}{\alpha_i}
+      \left( \lambda_1^{\alpha_i} + \lambda_2^{\alpha_i} + \lambda_3^{\alpha_i} - 3 \right),
+  \label{eq:ogden}
+\end{equation}
+其中 $\mu_i$、$\alpha_i$ 为材料参数，$p$ 为拉格朗日乘子。
+单轴不可压时 $\lambda_2=\lambda_3=\lambda^{-1/2}$，式~\eqref{eq:ogden} 退化为
+$P(\lambda) = \sum_i \mu_i \left( \lambda^{\alpha_i - 1} - \lambda^{-\alpha_i/2 - 1} \right)$。
+
+\subsection{Numerical implementation}
+（FEM 离散、UMAT 流程、PINN 的损失函数定义等）
+
+\section{Results and discussion}
+\subsection{Model validation}
+\begin{figure}[t]
+  \centering
+  % \includegraphics[width=.75\linewidth]{figs/uniaxial.pdf}
+  \fbox{\parbox[c][5cm][c]{.75\linewidth}{\centering 图占位：单轴拉伸拟合结果}}
+  \caption{Fitted nominal stress--stretch curves.}
+  \label{fig:uniaxial}
+\end{figure}
+图~\ref{fig:uniaxial} 显示……（描述图的顺序：先总体趋势，再定量对比，最后物理解释）。
+
+% ================== 附录 ==================
+\appendix
+\section{Derivation of the uniaxial nominal stress}
+推导过程放附录，正文只给结果，是软物质论文的常见做法。
+
+% ================== 参考文献 ==================
+\bibliographystyle{unsrtnat}
+\bibliography{refs}
+
+\end{document}

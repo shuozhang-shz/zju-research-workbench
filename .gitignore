@@ -1,0 +1,15 @@
+# 运行时生成的用户数据（含账号会话/个人数据，绝不提交）
+04-代码与数据/zju-bridge/config.json
+04-代码与数据/zju-bridge/session.json
+04-代码与数据/zju-bridge/state.json
+04-代码与数据/zju-bridge/seen.json
+04-代码与数据/zju-bridge/cache.json
+__pycache__/
+*.pyc
+build/
+dist/
+*.spec
+*.exe
+# 打包临时
+_src/
+"dist_staging/"  
