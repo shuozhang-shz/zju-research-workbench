@@ -13,3 +13,4 @@ dist/
 # 打包临时
 _src/
 "dist_staging/"  
+_head_check.txt
